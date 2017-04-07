@@ -1,0 +1,49 @@
+<div class="homepage">
+    <ion-view view-title="Wish List" cache-view="false" hide-back-button="true">
+        <!--<ion-nav-bar class="navbarpages">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>-->
+        <ion-nav-bar class="navbar-inner navbar-on-center">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-bag" ng-click="stageGo('menu.Cart')">
+                    <span class="cart-badge badge badge-assertive" ng-if="cartcount > 0">{{cartcount}}</span>
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding conent-section">
+             <div class="list" ng-repeat="prod in wishlist" ng-if="wishlist.length > 0"> 
+                <div class="item item-thumbnail-left">
+                    <img ng-src="{{prod.small_image}}">
+                    <h2>{{prod.product_name}}</h2>
+                    <div class="product-info">
+                        <span class="pull-right" style="padding: 10px" ng-click="delWish(prod.wishlist_id)"> <i class="fa fa-trash"></i></span>
+                        <div class="price"> 
+                            <div ng-if="prod.special_price"> 
+                                <span class="prod.strike-price"> <i class="fa fa-inr"> </i> {{prod.price}} </span>
+                                <span> <i class="fa fa-inr"></i> {{prod.special_price}} </span>
+                            </div>
+                            <div ng-if="!prod.special_price"> 
+                                <span> <i class="fa fa-inr"></i> {{prod.price}} </span>
+                            </div>
+                        </div>
+
+                        <div class="stock">
+                            {{(prod.is_in_stock == 1)?'In Stock':'Out of stock'}}
+                        </div>
+                    </div>
+                </div> 
+
+                <!--$scope.delWish-->
+            </div>
+            <div ng-if="wishlist.length == 0">
+                Wishlist is empty
+            </div>
+        </ion-content>
+    </ion-view>
+</div>

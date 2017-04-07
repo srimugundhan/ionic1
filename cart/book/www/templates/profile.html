@@ -1,0 +1,52 @@
+<div class="homepage">
+    <ion-view view-title="Profile" cache-view="false" hide-back-button="true">
+        <!--<ion-nav-bar class="navbarpages">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>-->
+        <ion-nav-bar class="navbar-inner navbar-on-center">
+            <ion-nav-buttons side="left">
+                <img src="img/menu.png" ng-click="showLeftSlide()" alt="" />
+            </ion-nav-buttons>
+
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-android-cart" ng-click="showRightSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding conent-section">
+            <form name="profileFrm" ng-submit="profileUpdate(profileFrm.$valid, data)" class="mtop40">
+                <div class="list">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">First Name</span>
+                        <input type="text" name="firstname" class="form_input" ng-model="data.firstname" placeholder="First Name" ng-required="true">
+                        <span class="error" ng-show="(profileFrm.$submitted || profileFrm.firstname.$touched) && (profileFrm.firstname.$pristine || profileFrm.firstname.$invalid) && (profileFrm.firstname.$error.required)">First Name Required</span>
+                    </label>
+
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Last Name</span>
+                        <input type="text" name="lastname" class="form_input" ng-model="data.lastname" placeholder="Last Name" ng-required="true">
+                        <span class="error" ng-show="(profileFrm.$submitted || profileFrm.lastname.$touched) && (profileFrm.lastname.$pristine || profileFrm.lastname.$invalid) && (profileFrm.lastname.$error.required)">Last Name Required</span>
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Email</span>
+                        <input type="email" name="email" class="form_input" ng-model="data.email" placeholder="email@gmail.com" ng-required="true" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/">
+                        <span class="error" ng-show="(profileFrm.$submitted || profileFrm.email.$touched) && (profileFrm.email.$pristine || profileFrm.email.$invalid) && (profileFrm.email.$error.required)">Email Required</span>
+
+                        <span class="error" ng-show="(profileFrm.$submitted || profileFrm.email.$touched) && (profileFrm.email.$pristine || profileFrm.email.$invalid) && (profileFrm.email.$error.pattern)">Enter Valid Email Id</span>
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Mobile</span> 
+                        <input type="number" name="mobile" ng-model="data.telephone" placeholder="9876543210" ng-minlength="10" ng-maxlength="10">
+                        <span class="error" ng-show="(profileFrm.$submitted || profileFrm.password.$touched) && (profileFrm.password.$pristine || profileFrm.password.$invalid) && (profileFrm.password.$error.minlength)">Minimum 10 Digit</span>
+
+                        <span class="error" ng-show="(profileFrm.$submitted || profileFrm.password.$touched) && (profileFrm.password.$pristine || profileFrm.password.$invalid) && (profileFrm.password.$error.maxlength)">Maximum 10 Digit</span>
+                    </label>
+                    <div class="inputbox">
+                        <button type="submit" class="button button-big">Update Profile</button>
+                    </div>
+                </div>
+            </form>
+        </ion-content>
+    </ion-view>
+</div>

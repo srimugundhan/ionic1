@@ -1,0 +1,25 @@
+<div class="homepage" cache-view="false">
+    <ion-view view-title="Categories" cache-view="false" hide-back-button="true">
+        <!--<ion-nav-bar class="navbarpages">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>-->
+        <ion-nav-bar class="navbar-inner navbar-on-center">
+            <ion-nav-buttons side="left">
+                <img src="img/menu.png" ng-click="showLeftSlide()" alt="" />
+            </ion-nav-buttons>
+
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-android-cart" ng-click="showRightSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding conent-section">
+            <ul class="list">
+                <li class="item item-icon-right" ng-repeat="category in categories">
+                    <a ui-sref="menu.SubCategories({id:category.category_id})"> <span ng-bind-html="category.name"> </span> <i class="icon ion-chevron-right"></i> </a>
+                </li>
+            </ul>
+        </ion-content>
+    </ion-view>
+</div>

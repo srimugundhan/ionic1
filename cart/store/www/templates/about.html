@@ -1,0 +1,26 @@
+<div class="homepage">
+    <ion-view view-title="About" cache-view="false" hide-back-button="true">
+        <!--<ion-nav-bar class="navbarpages">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>-->
+        <ion-nav-bar class="navbar-inner navbar-on-center">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-bag" ng-click="stageGo('menu.Cart')">
+                    <span class="cart-badge badge badge-assertive" ng-if="cartcount > 0">{{cartcount}}</span>
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding conent-section">
+            <div class="item item-text-wrap about-content">
+                <div class="title"> About </div> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+                a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+        </ion-content>
+    </ion-view>
+</div>

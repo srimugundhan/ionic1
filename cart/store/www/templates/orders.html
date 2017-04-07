@@ -1,0 +1,42 @@
+<div class="homepage">
+    <ion-view view-title="Orders" cache-view="false" hide-back-button="true">
+        <!--<ion-nav-bar class="navbarpages">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>-->
+        <ion-nav-bar class="navbar-inner navbar-on-center">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-bag" ng-click="stageGo('menu.Cart')">
+                    <span class="cart-badge badge badge-assertive" ng-if="cartcount > 0">{{cartcount}}</span>
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding conent-section">
+            <!--<div class="page-content underconst mar40">
+                <h1 class="blink"> Work in Progress </h1>
+            </div>-->
+ 
+            <ul class="list">
+                <li class="item" ng-repeat="order in orders" ng-if="orders.length > 0">
+                    <p>
+                        <span class="order-id">Order Id: {{order.order_id_for_customer}} </span> <br>
+                        <span class="data"> Date: {{order.order_date | date : 'dd-MMM-yyyy'}} </span> <br>
+                        <span class="ship"> Ship: {{order.ship_to}} </span> <br>
+                        <span class="price"> Price: <i class="fa fa-inr"> </i> {{order.order_total}} </span> <br>
+                        <span class="status">Status: {{order.order_status}} </span>
+                    </p>
+                </li>
+
+                <li class="item" ng-if="orders.length == 0">
+                    <p class="text-danger"> No order data </p>
+                </li>
+            </ul>
+ 
+        </ion-content>
+    </ion-view>
+</div>

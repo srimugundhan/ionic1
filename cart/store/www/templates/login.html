@@ -1,0 +1,44 @@
+<div class="app-bg">
+  <ion-view view-title="" cache-view="false" hide-back-button="true">
+    <ion-nav-bar class="navbarpages">
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right" class="colorwhite">
+        <button class="button button-icon button-clear colorwhite" ng-click="stageGo('menu.Home')">Skip Login</button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="padding">
+      <br> <br>
+      <form name="loginFrm" ng-submit="loginSubmit(loginFrm.$valid, data)" novalidate>
+        <div class="logoicon text-center">
+          <img src="img/logo.png" alt="" title="" />
+        </div>
+        <div class="list list-inset">
+          <label class="item item-input">
+                        <input type="email" name="email" ng-model="data.email" placeholder="Email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/" ng-required="true">
+                        <span class="error" ng-show="(loginFrm.$submitted || loginFrm.email.$touched) && (loginFrm.email.$pristine || loginFrm.email.$invalid) && (loginFrm.email.$error.required)">Email Required</span>
+                        <span class="error" ng-show="(loginFrm.$submitted || loginFrm.email.$touched) && (loginFrm.email.$pristine || loginFrm.email.$invalid) && (loginFrm.email.$error.pattern)">Enter Valid Email Id</span>
+                    </label>
+          <label class="item item-input item-icon-right">
+                        <i class="icon" ng-class="{'ion-eye-disabled': showPassword, 'ion-eye': !showPassword}" on-touch="showPassword = !showPassword"></i>
+                        <input type="password" id="password" placeholder="Password" ng-model="data.password" name="password" ng-hide="showPassword" ng-required="true">
+                        <input type="text" id="passwordRaw" placeholder="Password" ng-model="data.password" name="password" ng-show="showPassword" ng-required="true">
+                        <span class="error" ng-show="(loginFrm.$submitted || loginFrm.password.$touched) && (loginFrm.password.$pristine || loginFrm.password.$invalid) && (loginFrm.password.$error.required)">Password Required</span>
+                    </label>
+        </div>
+        <button class="button button-block button-dark"> LOGIN </button>
+      </form>
+      <div class="row" style="padding:0">
+        <div class="col col-50 pull-left" style="padding:0; margin-right:5px"> <button class="button button-block button-positive ion-social-facebook" style="width:95%"> Login </button></div>
+        <div class="col col-50 pull-right" style="padding:0; margin-left: 5px"> <button class="button button-block button-assertive ion-social-google" style="width:95%"> Signin </button> </div>
+      </div>
+      <br><br>
+      <div class="links text-center">
+        <a ui-sref="menu.Forgot()" class="colorwhite"> Forgot Password </a>
+        <span class="colorwhite"> | </span>
+        <a ui-sref="menu.Register()" class="colorwhite"> New User? Sign up </a>
+      </div>
+    </ion-content>
+  </ion-view>
+</div>

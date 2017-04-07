@@ -1,0 +1,55 @@
+<div class="homepage" cache-view="false">
+    <ion-view view-title="{{category}}" cache-view="false" hide-back-button="true">
+        <ion-nav-bar class="navbar-inner navbar-on-center">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-bag" ng-click="stageGo('menu.Cart')">
+                    <span class="cart-badge badge badge-assertive" ng-if="cartcount > 0">{{cartcount}}</span>
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding conent-section product-view">
+            <div class="category-product-list">
+                <div class="sort-filter pull-right">
+                    <span class="filter" ng-click="showFilter()">
+                        <i class="ion-android-funnel"></i> Filter
+                    </span>
+                    <span class="sort" ng-click="showSort">
+                        <i class="ion-connection-bars"></i> Sort
+                    </span>
+                </div>
+                <div class="row slice-of" ng-repeat="productz in products | inSlicesOf:2">
+                    <div class="col col-50" ng-repeat="product in productz">
+                        <div class="list card">
+                            <a ui-sref="menu.ProductView({id: product.product_id})">
+                                <div class="item item-image">
+                                    <img ng-src="{{product.image}}" class="full-image">
+                                </div>
+                                <p class="product-info">
+                                    <span class="subdued pull-left">{{product.name | capitalize}}</span>
+                                    <span class="subdued pull-right"><i class="fa fa-inr"></i>{{product.price}}</span>
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="category-50" ng-repeat="product in products">
+                    <div class="list card">
+                        <a ui-sref="menu.ProductView({id: product.product_id})">
+                            <div class="item item-image">
+                                <img ng-src="{{product.image}}" class="full-image">
+                            </div>
+                            <p class="product-info">
+                                <span class="subdued pull-left">{{product.name | capitalize}}</span>
+                                <span class="subdued pull-right"><i class="fa fa-inr"></i>{{product.price}}</span>
+                            </p>
+                        </a>
+                    </div>
+                </div>-->
+            </div>
+
+        </ion-content>
+    </ion-view>
+</div>

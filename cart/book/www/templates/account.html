@@ -1,0 +1,46 @@
+<div class="homepage">
+    <ion-view view-title="My Account" cache-view="false" hide-back-button="true">
+        <!--<ion-nav-bar class="navbarpages">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>-->
+        <ion-nav-bar class="navbar-inner navbar-on-center">
+            <ion-nav-buttons side="left">
+                <img src="img/menu.png" ng-click="showLeftSlide()" alt="" />
+            </ion-nav-buttons>
+
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-android-cart" ng-click="showRightSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding conent-section  mar40">
+            <ul class="list">
+                <li class="item item-icon-right">
+                    <a ui-sref="menu.SubCategories({id:category.category_id})"> Your Orders 
+                        <i class="icon ion-chevron-right right-icon"></i>
+                    </a>
+                </li>
+                <li class="item">
+                    <a ui-sref="menu.SubCategories({id:category.category_id})"> Chnage Password </a>
+                </li>
+                <li class="item">
+                    <a ui-sref="menu.SubCategories({id:category.category_id})"> Manage Address </a>
+                </li>
+                <li class="item">
+                    <a ui-sref="menu.SubCategories({id:category.category_id})"> Update Profile </a>
+                </li>
+                <li class="item">
+                    <a ui-sref="menu.SubCategories({id:category.category_id})"> Return </a>
+                </li>
+                <li class="item">
+                    <a ui-sref="menu.SubCategories({id:category.category_id})"> Wallet </a>
+                </li>
+
+                <li class="item">
+                    <a ui-sref="menu.SubCategories({id:category.category_id})"> Feedback </a>
+                </li>
+            </ul>
+        </ion-content>
+    </ion-view>
+</div>

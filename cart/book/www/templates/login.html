@@ -1,0 +1,45 @@
+<div class="login-screen">
+    <div class="view">
+        <ion-scroll direction="y">
+            <div class="page">
+                <div class="page-content login-screen-content registerbody">
+                    <div class="register-content">
+                        <a href="#" class="close-login-screen floatright"><i class="fa fa-times"></i></a>
+                        <h3><img src="img/logo2.png" alt=""></h3>
+                        <form name="loginForm" ng-submit="loginSubmit(loginForm.$valid, data)" novalidate>
+                            <div class="inputbox">
+                                <span>Email:</span><br>
+                                <input type="email" name="email" placeholder="Email" ng-model="data.email" ng-required="true" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/">
+                                <span class="error" ng-show="(loginForm.$submitted || loginForm.email.$touched) && (loginForm.email.$pristine || loginForm.email.$invalid) && (loginForm.email.$error.required)">Required Email Id</span>
+
+                                <span class="error" ng-show="(loginForm.$submitted || loginForm.email.$touched) && (loginForm.email.$pristine || loginForm.email.$invalid) && (loginForm.email.$error.pattern)">Enter a valid Email</span>
+
+                            </div>
+                            <div class="inputbox">
+                                <span>Password:</span><br>
+                                <input type="password" name="password" ng-model="data.password" placeholder="***********" ng-required="true">
+                                <span class="error" ng-show="(loginForm.$submitted || loginForm.password.$touched) && (loginForm.password.$pristine || loginForm.password.$invalid) && (loginForm.password.$error.required)">Password Required</span>
+                            </div>
+                            <div class="inputbox">
+                                <a data-popup=".popup-forgetpass" class="open-popup" ui-sref="menu.Forgot()">Forget Password?</a>
+                            </div>
+                            <div class="inputbox">
+                                <button type="submit" class="button button-big">Login</button>
+                            </div>
+                        </form>
+                        <p>Don’t have an account? <a data-popup=".popup-register" class="open-popup" ui-sref="menu.Register()">Sign Up</a></p>
+
+                        <div class="row">
+                            <div class="col col-50">
+                                <button type="submit" class="button button-big fa fa-facebook" ng-click="socialLogin('FB')"> Facebook</button>
+                            </div>
+                            <div class="col col-50">
+                                <button type="submit" class="button button-big fa fa-google-plus" ng-class="socialLogin('Google')"> Google+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-scroll>
+    </div>
+</div>

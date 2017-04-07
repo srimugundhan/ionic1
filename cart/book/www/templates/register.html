@@ -1,0 +1,42 @@
+<div class="popup popup-register">
+    <ion-scroll direction="y">
+        <div class="registerbody">
+            <a href="#" class="close-popup closebutton"><i class="fa fa-times"></i></a>
+            <div class="register-content">
+                <h3><img src="img/logo2.png" alt=""></h3>
+                <form name="registerFrm" ng-submit="registeSubmit(registerFrm.$valid, data)" novalidate>
+                    <div class="inputbox">
+                        <span>First Name:</span><br>
+                        <input type="text" name="firstname" ng-model="data.firstname" placeholder="First Name" ng-required="true">
+                        <span class="error" ng-show="(registerFrm.$submitted || registerFrm.firstname.$touched) && (registerFrm.firstname.$pristine || registerFrm.firstname.$invalid) && (registerFrm.firstname.$error.required)">First Name Required</span>
+                    </div>
+                    <div class="inputbox">
+                        <span>Last Name:</span><br>
+                        <input type="text" name="lastname" ng-model="data.lastname" placeholder="Last Name" ng-required="true">
+                        <span class="error" ng-show="(registerFrm.$submitted || registerFrm.lastname.$touched) && (registerFrm.lastname.$pristine || registerFrm.lastname.$invalid) && (registerFrm.lastname.$error.required)">Last Name Required</span>
+                    </div>
+                    <div class="inputbox">
+                        <span>Email:</span><br>
+                        <input type="email" name="email" ng-model="data.email" placeholder="email@gmail.com" ng-required="true" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/">
+                        <span class="error" ng-show="(registerFrm.$submitted || registerFrm.email.$touched) && (registerFrm.email.$pristine || registerFrm.email.$invalid) && (registerFrm.email.$error.required)">Email Required</span>
+
+                        <span class="error" ng-show="(registerFrm.$submitted || registerFrm.email.$touched) && (registerFrm.email.$pristine || registerFrm.email.$invalid) && (registerFrm.email.$error.pattern)">Enter Valid Email Id</span>
+                    </div>
+                    <div class="inputbox">
+                        <span>Password:</span><br>
+                        <input type="password" name="password" ng-model="data.password" placeholder="***********" ng-required="true">
+                        <span class="error" ng-show="(registerFrm.$submitted || registerFrm.password.$touched) && (registerFrm.password.$pristine || registerFrm.password.$invalid) && (registerFrm.password.$error.required)">Password Required</span>
+                    </div>
+                    <div class="inputbox">
+                        <button type="submit" class="button button-big">Sign Up</button>
+                    </div>
+                </form>
+
+                <p>
+                    <a ui-sref="menu.Login()">
+                        < Back to Login </a>
+                </p>
+            </div>
+        </div>
+    </ion-scroll>
+</div>

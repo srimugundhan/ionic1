@@ -1,0 +1,100 @@
+<div class="homepage" cache-view="false">
+  <ion-view view-title="Manage Address" cache-view="false" hide-back-button="true">
+
+    <ion-nav-bar class="navbar-inner navbar-on-center">
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+      </ion-nav-buttons>
+
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-bag" ng-click="stageGo('menu.Cart')">
+                    <span class="cart-badge badge badge-assertive" ng-if="cartcount > 0">{{cartcount}}</span>
+                </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="padding conent-section">
+      <div class="list">
+      <div class="pull-right">
+        <button class="button button-positive" ng-click="showDiv('add')"  ng-if="!addrEdit && !addrAdd"> Add Address </button>
+        <button class="button button-assertive" ng-click="showDiv()"  ng-if="addrAdd || addrEdit"> Cancel </button>
+      </div>
+      </div>
+      <!--<h1 class="blink" ng-if="!addrEdit && !addrAdd"> No address data </h1>-->
+      <br>
+
+      <div class="list" ng-if="!addrEdit && !addrAdd && (address.length > 0)">
+        <br>
+        <div class="address-box" ng-repeat="addr in address">
+          <span class="pull-right" style="padding: 10px" ng-click="showDiv('edit', addr.address_id)"> <i class="fa fa-pencil"></i></span> 
+          <span class="pull-right" style="padding: 10px" ng-click="delAddr(addr.address_id)"> <i class="fa fa-trash"></i></span> <br>
+          <p> {{addr.contact_name}} </p>
+          <p> {{telephone}} </p>
+          <p ng-bind-html="addr.street"></p>
+          <p> {{addr.city}}, {{addr.state}} </p>
+          <p ng-if="addr.country != false"> {{addr.country}} </p>
+          <p> {{addr.postcode}} </p>
+        </div>
+      </div>
+      <div class="error" ng-if="!addrEdit && !addrAdd && (address.length == 0)">
+        <div class="list text-center">
+          No address data
+        </div>
+      </div>
+
+      <div class="list" ng-if="addrAdd || addrEdit">
+        <h2 class="text-center"> {{(addrAdd)?'Add':'Edit'}} Address </h2>
+        <form name="addrFrm" ng-submit="addAddr(addrFrm.$valid, data)" novalidate>
+          <label class="item item-input">
+            <input type="text" name="firstname" ng-model="data.firstname" placeholder="First Name" ng-required="true">
+            <span class="error" ng-show="(addrFrm.$submitted || addrFrm.firstname.$touched) && (addrFrm.firstname.$pristine || addrFrm.firstname.$invalid) && (addrFrm.firstname.$error.required)"> Required</span>
+          </label>
+          <label class="item item-input">
+            <input type="text" name="lastname" ng-model="data.lastname" placeholder="Last Name" ng-required="true">
+            <span class="error" ng-show="(addrFrm.$submitted || addrFrm.lastname.$touched) && (addrFrm.lastname.$pristine || addrFrm.lastname.$invalid) && (addrFrm.lastname.$error.required)"> Required</span>
+          </label>
+
+          <label class="item item-input">
+            <div class="row">
+              <div class="col col-20">
+                <input type="number" name="country_code" ng-model="data.country_code" placeholder="91" ng-required="true">
+                <span class="error" ng-show="(addrFrm.$submitted || addrFrm.country_code.$touched) && (addrFrm.country_code.$pristine || addrFrm.country_code.$invalid) && (addrFrm.country_code.$error.required)"> Required</span>
+              </div>
+              <div class="col col-80">
+                <input type="tel" name="mobilenumber" ng-model="data.mobilenumber" placeholder="Mobile" ng-required="true">
+                <span class="error" ng-show="(addrFrm.$submitted || addrFrm.mobilenumber.$touched) && (addrFrm.mobilenumber.$pristine || addrFrm.mobilenumber.$invalid) && (addrFrm.mobilenumber.$error.required)"> Required</span>
+              </div>
+            </div>
+          </label>
+
+          <label class="item item-input">
+            <input type="text" name="street_address_1" ng-model="data.street_address_1" placeholder="Address Line 1" ng-required="true">
+            <span class="error" ng-show="(addrFrm.$submitted || addrFrm.street_address_1.$touched) && (addrFrm.street_address_1.$pristine || addrFrm.street_address_1.$invalid) && (addrFrm.street_address_1.$error.required)"> Required</span>
+          </label>
+
+          <label class="item item-input">
+            <input type="text" name="street_address_2" ng-model="data.street_address_2" placeholder="Address Line 2" ng-required="true">
+            <span class="error" ng-show="(addrFrm.$submitted || addrFrm.street_address_2.$touched) && (addrFrm.street_address_2.$pristine || addrFrm.street_address_2.$invalid) && (addrFrm.street_address_2.$error.required)"> Required</span>
+          </label>
+
+          <label class="item item-input">
+            <input type="text" name="city" ng-model="data.city" placeholder="City" ng-required="true">
+            <span class="error" ng-show="(addrFrm.$submitted || addrFrm.city.$touched) && (addrFrm.city.$pristine || addrFrm.city.$invalid) && (addrFrm.city.$error.required)"> Required</span>
+          </label>
+
+          <label class="item item-input">
+            <input type="text" name="state" ng-model="data.state" placeholder="State" ng-required="true">
+            <span class="error" ng-show="(addrFrm.$submitted || addrFrm.state.$touched) && (addrFrm.state.$pristine || addrFrm.state.$invalid) && (addrFrm.state.$error.required)"> Required</span>
+          </label>
+
+          <label class="item item-input">
+            <input type="text" name="zipcode" ng-model="data.zipcode" placeholder="Zip Code" ng-required="true">
+            <span class="error" ng-show="(addrFrm.$submitted || addrFrm.zipcode.$touched) && (addrFrm.zipcode.$pristine || addrFrm.zipcode.$invalid) && (addrFrm.zipcode.$error.required)"> Required</span>
+          </label>
+
+          <button type="submit" class="button button-block button-positive"> {{btnTxt}} </button>
+        </form>
+      </div>
+
+    </ion-content>
+  </ion-view>
+</div>

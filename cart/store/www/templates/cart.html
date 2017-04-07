@@ -1,0 +1,68 @@
+<div class="homepage" cache-view="false">
+    <ion-view view-title="Cart" cache-view="false" hide-back-button="true">
+        <!--<ion-nav-bar class="navbarpages">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>-->
+        <ion-nav-bar class="navbar-inner navbar-on-center">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding conent-section">
+            <div class="list" ng-repeat="prod in cart.cart_detail" ng-if="cart.cart_detail.length > 0"> 
+                <div class="item item-thumbnail-left">
+                    <img ng-src="{{prod.productImage}}">
+                    <h2>{{prod.productName}}</h2>
+                    <div class="car-info">
+                        <!--<div class="quantity">
+                            Quantity: {{prod.productQuantity}}
+                        </div>-->
+                        <div class="price"> 
+                            <div class="offer-price displayinline" ng-if="prod.productMarketPrice != prod.productPrice">
+                                <span class="market-price">
+                                    <i class="fa fa-inr"> </i> {{prod.productMarketPrice}} 
+                                </span>
+                                <span class="productprice">
+                                    <i class="fa fa-inr"> </i> {{prod.productPrice}}
+                                </span>
+                            </div>
+                            <div class="displayinline" ng-if="prod.productMarketPrice == prod.productPrice">
+                                <i class="fa fa-inr"> </i> {{prod.productPrice}}
+                            </div>
+                            <div class="cart-options">
+                              <span class="quantity">
+                                    <!--Quantity: {{prod.productQuantity}}-->
+                                    <select ng-model="prod.productQuantity" ng-change="quantityChange(prod.productId, prod.cart_id, prod.productQuantity)" ng-options="quant as quant for quant in quantity">
+                                        <option value=""> Select </option>
+                                        <!--<option value="{{quant}}" ng-selected="{{quant == prod.productQuantity}}" ng-repeat="quant in quantity"> {{quant}} </option>-->
+                                    </select>
+                                </span>  
+                                <span class="delete">
+                                    <button class="button button-small button-assertive" ng-click="deleteCart(prod.productId, prod.cart_id)"> Delete </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="selected-options" ng-if="prod.selectedoptions.length > 0">
+                            Here for selected options
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="cart-details" ng-if="cart.cart_detail.length > 0">
+                <div class="details-info">
+                    <div class="item-count">Item Count: {{cart.items_count}}</div>
+                    <div class="quantiy">Quantity: {{cart.items_qty}}</div>
+                    <div class="subtotal">Subtotal: {{cart.subtotal}}</div>
+                    <div class="shipping">Shipping: {{cart.shipping_price}}</div>
+                    <div class="total">{{shipping_price + grand_total}}</div>
+                </div>
+            </div>
+
+            <div ng-if="cart.cart_detail.length == 0">
+                Cart is empty
+            </div>
+        </ion-content>
+    </ion-view>
+</div>

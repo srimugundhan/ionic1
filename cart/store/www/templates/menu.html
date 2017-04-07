@@ -1,0 +1,65 @@
+<!--enable-menu-with-back-views="false"-->
+<ion-side-menus class="left-menu">
+    <ion-side-menu-content ng-controller="DashboardController">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left" class="slide-menu-bar">
+        <ion-content class="panel panel-left panel-reveal">
+            <ion-list class="content-block">
+                <ion-item class="item item-avatar item-thumbnail menuavatar">
+                    <img ng-src="{{useravatar}}" class="useravatar">
+                    <div class="username"> Welcome, {{username}} </div>
+                </ion-item>
+                <ion-item nav-clear menu-close class="item-link close-panel item-content fa fa-home" ng-click="stageGo('menu.Home')">
+                    Home
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="item-link close-panel item-content fa fa-user" ng-click="stageGo('menu.Account')" ng-if="is_auth">
+                    My Account
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="item-link close-panel item-content fa fa-shopping-basket" ng-click="stageGo('menu.Orders')" ng-if="is_auth">
+                    My Orders
+                </ion-item>
+
+                <!--<ion-item nav-clear menu-close class="item-link close-panel item-content fa fa-user" ng-click="stageGo('menu.Wallet')" ng-if="is_auth">
+                    My Wallet
+                </ion-item>-->
+
+                <ion-item nav-clear menu-close class="item-link close-panel item-content fa fa-heart" ng-click="stageGo('menu.Wishlist')" ng-if="is_auth">
+                    My Wishlist
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="item-link close-panel item-content fa fa-heartbeat" ng-click="stageGo('menu.RateApp')">
+                    Rate our APP
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="item-link close-panel item-content fa fa-question-circle" ng-click="stageGo('menu.FAQ')">
+                    FAQ
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="item-link close-panel item-content fa fa-phone" ng-click="stageGo('menu.Contact')">
+                    Contact Us
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="item-link close-panel item-content fa fa-info-circle" ng-click="stageGo('menu.About')">
+                    About Us
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="item-link close-panel item-content fa fa-power-off" ng-click="logout()" ng-if="is_auth">
+                    Logout
+                </ion-item>
+                
+                <ion-item nav-clear menu-close class="item-link close-panel item-content fa fa-power-off" ng-click="stageGo('menu.Login')" ng-if="!is_auth">
+                    Login
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

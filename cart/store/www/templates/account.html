@@ -1,0 +1,84 @@
+<div class="homepage">
+    <ion-view view-title="My Account" cache-view="false" hide-back-button="true">
+        <!--<ion-nav-bar class="navbarpages">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>-->
+        <ion-nav-bar class="navbar-inner navbar-on-center bar-dark">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear fa fa-power-off" ng-click="logout()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding conent-section  mar40">
+            <div class="list">
+                <div class="item item-thumbnail-left">
+                    <img ng-src="{{useravatar}}">
+                    <span class="pull-right" ng-click="is_edit()" ng-if="!is_edit_enable"> <i class="fa fa-pencil"></i></span> <br>
+                    <div ng-if="!is_edit_enable">
+                        <h2>Pretty Hate Machine</h2>
+                        <p>Nine Inch Nails</p>
+                        <p> 68/1 - Address of Current, </p>
+                        <p> City of Current,</p>
+                        <p> State of Current, </p>
+                        <p> Country of Current</p>
+                        <p> 9876543210 </p>
+                    </div>
+                    <div ng-if="is_edit_enable">
+                        <form name="profileFrm" ng-submit="profileUpdate(profileFrm.$valid, data)" novalidate>
+                            <div class="list">
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">First Name</span>
+                                    <input type="text" name="firstname" placeholder="Firstname" ng-required="true" ng-model="data.firstname">
+                                    <span class="error" ng-show="(profileFrm.$submitted || profileFrm.firstname.$touched) && (profileFrm.firstname.$pristine || profileFrm.firstname.$invalid) && (profileFrm.firstname.$error.required)">Required</span>
+                                </label>
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">Last Name</span>
+                                    <input type="text" name="lastname" placeholder="Lastname" ng-required="true" ng-model="data.lastname">
+                                    <span class="error" ng-show="(profileFrm.$submitted || profileFrm.lastname.$touched) && (profileFrm.lastname.$pristine || profileFrm.lastname.$invalid) && (profileFrm.lastname.$error.required)">Required</span>
+                                </label>
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">Email</span>
+                                    <input type="email" name="email" placeholder="xxx@yyy.com" ng-required="true" ng-model="data.email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/">
+                                    <span class="error" ng-show="(profileFrm.$submitted || profileFrm.email.$touched) && (profileFrm.email.$pristine || profileFrm.email.$invalid) && (profileFrm.email.$error.required)">Required</span>
+                                    <span class="error" ng-show="(profileFrm.$submitted || profileFrm.email.$touched) && (profileFrm.email.$pristine || profileFrm.email.$invalid) && (profileFrm.email.$error.pattern)">Enter a valid email</span>
+                                </label>
+                                <!--<label class="item item-input item-stacked-label">
+                                    <span class="input-label">Phone</span>
+                                    <input type="tel" name="" placeholder="9876543210">
+                                </label>-->
+                                <br>
+                                <button type="submit" class="button button-dark"> Update </button>
+                                <a class="button button-assertive" ng-click="cancel()"> Cancel </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="list">
+                <li class="item item-icon-right">
+                    <a ui-sref="menu.ManageAddress()"> Manage Address 
+                        <i class="icon ion-chevron-right right-icon"></i>
+                    </a>
+                </li>
+
+                <li class="item item-icon-right">
+                    <a ui-sref="menu.Orders()"> My Orders 
+                        <i class="icon ion-chevron-right right-icon"></i>
+                    </a>
+                </li>
+
+                <li class="item item-icon-right">
+                    <a ui-sref="menu.Wallet()"> My Wallet 
+                        <i class="icon ion-chevron-right right-icon"></i>
+                    </a>
+                </li>
+
+            </ul>
+        </ion-content>
+    </ion-view>
+</div>

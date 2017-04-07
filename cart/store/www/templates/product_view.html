@@ -1,0 +1,76 @@
+<div class="homepage">
+  <ion-view view-title="Product" cache-view="false" hide-back-button="true">
+
+    <ion-nav-bar class="navbar-inner navbar-on-center">
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+      </ion-nav-buttons>
+
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-bag" ng-click="stageGo('menu.Cart')">
+          <span class="cart-badge badge badge-assertive" ng-if="cartcount > 0">{{cartcount}}</span>
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="padding conent-section">
+      <div class="list card">
+        <div class="item item-image">
+          <img ng-src="{{product.thumbnail}}" class="full-image">
+        </div>
+        <div class="other-images" ng-if="media_gallery.length > 1">
+          Here more image
+        </div>
+        <div class="product-info">
+          <div class="row">
+            <div class="col col-90">
+              <div class="product-name">{{product.name}}</div>
+              <div class="price">
+                <span ng-if="product.special_price == null">
+                    <i class="fa fa-inr"></i> {{product.price}}
+                </span>
+                <span ng-if="product.special_price != null">
+                  <span class="strike-price"> <i class="fa fa-inr"></i> {{product.price}} </span>
+                <span class="special-price"><i class="fa fa-inr"></i> {{product.price}} </span>
+                </span>
+              </div>
+            </div>
+            <div class="col col-10">
+              <div class="favorite">
+                <div ng-click="favorite()"> 
+                  <i class="ion-android-favorite-outline" ng-if="!isFavorite"> </i> 
+                  <i class="ion-android-favorite" ng-if="isFavorite"> </i> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="coupon">
+        <div class="list">
+          <div class="item item-input-inset">
+            <div class="row">
+              <div class="col col-80">
+                <label class="item-input-wrapper">
+                  <input type="text" placeholder="Coupon">
+              </label>
+              </div>
+              <div class="col col-80">
+                <button class="button button-positive">Apply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about">
+        <!--<div class="heading"> About </div>-->
+        <div ng-bind-html="product.description"></div>
+      </div>
+    </ion-content>
+    <ion-footer-bar keyboard-attach>
+      <div class="cart-options">
+        <div class="btn-cart add-cart" ng-click="addCart()"> Add to Cart </div>
+        <div class="btn-cart buy-now" ng-class="buyNow()"> Buy Now </div>
+      </div>
+    </ion-footer-bar>
+  </ion-view>
+</div>

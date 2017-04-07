@@ -1,0 +1,46 @@
+<div class="app-bg">
+  <ion-view view-title="" cache-view="false" hide-back-button="true">
+    <ion-nav-bar class="navbarpages">
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+      </ion-nav-buttons>
+      <!--<ion-nav-buttons side="right">
+                <button class="button button-icon button-clear" ng-click="stageGo('menu.Home')">Skip Login</button>
+            </ion-nav-buttons>-->
+    </ion-nav-bar>
+    <ion-content class="padding">
+      <br> <br> <br>
+      <form name="registerFrm" ng-submit="registerSubmit(registerFrm.$valid, data)" novalidate>
+        <div class="logoicon text-center">
+          <img src="img/logo.png" alt="" title="" />
+        </div>
+        <br>
+        <div class="list">
+          <label class="item item-input">
+                        <input type="text" placeholder="First Name" name="first_name" ng-model="data.first_name" ng-required="true">
+                    </label>
+          <span class="error" ng-show="(registerFrm.$submitted || registerFrm.first_name.$touched) && (registerFrm.first_name.$pristine || registerFrm.first_name.$invalid) && (registerFrm.email.$error.required)">Firstname Required</span>
+        </div>
+        <div class="list">
+          <label class="item item-input">
+                        <input type="text" placeholder="Last Name" name="last_name" ng-model="data.last_name" ng-required="true">
+                    </label>
+          <span class="error" ng-show="(registerFrm.$submitted || registerFrm.last_name.$touched) && (registerFrm.last_name.$pristine || registerFrm.last_name.$invalid) && (registerFrm.last_name.$error.required)">Lastname Required</span>
+        </div>
+        <div class="list">
+          <label class="item item-input">
+                        <input type="email" name="email" ng-model="data.email" placeholder="Email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/" ng-required="true">
+                    </label>
+          <span class="error" ng-show="(registerFrm.$submitted || registerFrm.email.$touched) && (registerFrm.email.$pristine || registerFrm.email.$invalid) && (registerFrm.email.$error.required)">Email Required</span>
+          <span class="error" ng-show="(registerFrm.$submitted || registerFrm.email.$touched) && (registerFrm.email.$pristine || registerFrm.email.$invalid) && (registerFrm.email.$error.pattern)">Enter Valid Email Id</span>
+        </div>
+        <!--<div class="list">
+                    <label class="item item-input">
+                    <input type="tel" placeholder="Phone" ng-model="data.">
+                </label>
+                </div>-->
+        <button type="submit" class="button button-block button-dark"> SIGN UP </button>
+      </form>
+    </ion-content>
+  </ion-view>
+</div>
