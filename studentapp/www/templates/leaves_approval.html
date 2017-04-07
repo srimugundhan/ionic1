@@ -1,0 +1,69 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="Leave Approval" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+            <ion-scroll direction="x" class="wide-as-needed">
+                <div class="divTable" ng-if="leaveDetails.length > 0">
+                    <div class="divBody">
+                        <div class="row header">
+                            <div class="col">
+                                SNO <br>
+                                <label> <input type="checkbox" ng-model="isCheckAll" ng-click="selectAll(isCheckAll)"> {{isCheckLable}}</label>
+                            </div>
+                            <div class="col"> EmpId </div>
+                            <div class="col"> Emp Name</div>
+                            <div class="col"> Dept Name</div>
+                            <div class="col"> Leave Type</div>
+                            <div class="col"> From Date </div>
+                            <div class="col"> To Date </div>
+                            <div class="col"> No Lev</div>
+                            <div class="col"> Inc Id </div>
+                            <div class="col"> Inc Name </div>
+                            <div class="col"> Status </div>
+                        </div>
+                        <div class="row" ng-repeat="leave in leaveDetails">
+                            <div class="col">
+                                {{$index+1}}
+                                <input type="checkbox" ng-model="selected[$index]" ng-click="chooseCheckbox($index, selected[$index])" ng-checked="isCheckAll">
+                            </div>
+                            <div class="col"> {{leave.empid}} </div>
+                            <div class="col"> {{leave.empname}} </div>
+                            <div class="col"> {{leave.deptname}} </div>
+                            <div class="col"> {{leave.leavetype}} </div>
+                            <div class="col"> {{leave.fromdate | dateFmt}} </div>
+                            <div class="col"> {{leave.todate | dateFmt}} </div>
+                            <div class="col"> {{leave.noofdays}} </div>
+                            <div class="col"> {{leave.inchargeEmpId}} </div>
+                            <div class="col"> {{leave.inchargeEmpName}} </div>
+                            <div class="col"> {{leave.status}} </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-if="leaveDetails.length > 0">
+                    <div class="col col-35">
+                        <button type="submit" class="button button-block button-positive" ng-click="changeLeaveStatus('Approve')">
+                        Approve
+                    </button>
+                    </div>
+                    <div class="col col-35">
+                        <button type="submit" class="button button-block button-assertive" ng-click="changeLeaveStatus('Reject')">
+                        Reject
+                    </button>
+                    </div>
+                    <div class="col col-35">
+                        <button type="submit" class="button button-block button-calm" ng-click="refresh()">
+                        Refresh
+                    </button>
+                    </div>
+                </div>
+                <div ng-if="leaveDetails.length == 0" class="no-record">
+                    No leave approval data
+                </div>
+            </ion-scroll>
+        </ion-content>
+    </ion-view>
+</div>

@@ -1,0 +1,72 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="Profile" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+            <form novalidate>
+                <div class="list">
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">First Name</span>
+                        <input type="text" class="form_input" ng-model="profile.fname" readonly="readonly">
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Last Name</span>
+                        <input type="text" class="form_input" ng-model="profile.lname" readonly="readonly">
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Father Name</span>
+                        <input type="text" class="form_input" ng-model="profile.fatherName" readonly="readonly">
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Email</span>
+                        <input type="text" class="form_input" ng-model="profile.email" readonly="readonly">
+                    </label>
+
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Contact</span>
+                        <input type="text" class="form_input" ng-model="profile.contactNumber" readonly="readonly">
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">DOB</span>
+                        <input type="text" class="form_input" ng-model="profile.dob" readonly="readonly">
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Sex</span>
+                        <input type="text" class="form_input" ng-model="profile.sex" readonly="readonly">
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Blood Group</span>
+                        <input type="text" class="form_input" ng-model="profile.blood" readonly="readonly">
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Address</span>
+                        <textarea class="form_input" ng-model="profile.address" readonly="readonly"></textarea>
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Course</span>
+                        <input type="text" class="form_input" ng-model="profile.course" readonly="readonly">
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Academic</span>
+                        <input type="text" class="form_input" ng-model="profile.academic" readonly="readonly">
+                    </label>
+                    <div class="clearfix"></div>
+                    <br>
+                </div>
+            </form>
+        </ion-content>
+    </ion-view>
+</div>

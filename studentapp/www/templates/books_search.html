@@ -1,0 +1,53 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="Search Book" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+            <form name="timetbl" ng-submit="searchBook(timetbl.$valid, data)" novalidate>
+                <div class="list">
+                    <label class="item item-input">
+                        <div class="input-label">
+                            Book Name
+                        </div>
+                        <input type="text" id="group" class="form_select" ng-model="data.bookname" name="yearSelect" placeholder="Book Name" ng-required="true">
+                    </label>
+                    <span class="error" ng-show="(timetbl.$submitted || timetbl.yearSelect.$touched) && (timetbl.yearSelect.$pristine || timetbl.yearSelect.$invalid) && (timetbl.yearSelect.$error.required)">Enter Book Name</span>
+                </div>
+                <div class="list">
+                    <label class="item item-input">
+                        <div class="input-label">
+                            Author Name
+                        </div>
+                        <input type="text" ng-model="data.author" class="form_select" placeholder="Author Name">
+                    </label>
+
+                </div>
+                <button type="submit" class="button button-dark button-block"> Submit </button>
+                <br>
+            </form>
+
+            <ion-scroll direction="x" class="wide-as-needed">
+                <ul class="responsive_table" ng-if="bookSearch.length > 0">
+                    <li class="row header">
+                        <div class="col" style="width: 10%">SNO</div>
+                        <div class="col" style="width: 40%">Book Name</div>
+                        <div class="col" style="width: 40%">Auth Name</div>
+                        <div class="col" style="width: 10%">Count</div>
+                    </li>
+                    <li class="row" ng-repeat="book in bookSearch">
+                        <div class="col" style="width: 10%">{{$index+1}}</div>
+                        <div class="col" style="width: 40%">{{book.book}}</div>
+                        <div class="col" style="width: 40%">{{book.author}}</div>
+                        <div class="col" style="width: 10%">{{book.count}}</div>
+                    </li>
+                </ul>
+                <div ng-if="bookSearch.length == 0" class="no-record">
+                    No books
+                </div>
+            </ion-scroll>
+        </ion-content>
+    </ion-view>
+</div>

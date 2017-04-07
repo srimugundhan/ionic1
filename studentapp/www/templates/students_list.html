@@ -1,0 +1,47 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="My Students" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+            <div class="list">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Choose Year
+                    </div>
+                    <select id="group" class="form_select" ng-model="selyear" name="leave_group" ng-options="year as year for year in years" ng-required="true" ng-change="selectYear(selyear)">
+                    <option value=""> Select Year </option>
+                    </select>
+                </label>
+            </div>
+
+            <ion-scroll direction="x" class="wide-as-needed">
+                <ul class="responsive_table" ng-if="students.length > 0">
+                    <li class="row header">
+                        <div class="col">SNO</div>
+                        <div class="col">ID</div>
+                        <div class="col">Reg No</div>
+                        <div class="col">First Name</div>
+                        <div class="col">Last Name</div>
+                        <div class="col">Mobile</div>
+                        <div class="col">Parents Mobile</div>
+                    </li>
+                    <li class="row" ng-repeat="student in students">
+                        <div class="col">{{$index+1}}</div>
+                        <div class="col">{{student.studentId}}</div>
+                        <div class="col">{{student.regno}}</div>
+                        <div class="col">{{student.FName}}</div>
+                        <div class="col">{{student.LNmane}}</div>
+                        <div class="col">{{student.mobileNumber}}</div>
+                        <div class="col">{{student.parentsNumber}}</div>
+                    </li>
+                </ul>
+                <div ng-if="students.length == 0 && selyear" class="no-record">
+                    No Student in this year
+                </div>
+            </ion-scroll>
+        </ion-content>
+    </ion-view>
+</div>

@@ -1,0 +1,49 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="E-Wallet" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+            <div class="amount">
+                <div class="pull-right">
+                    Amount Available: <span> Rs {{availBal}} </span>
+                </div>
+            </div>
+            <div ng-if="is_showbtn">
+                <div class="btn-50" ng-repeat="walletmenu in walletmenus">
+                    <button class="button button-block button-assertive wallet-button-list" ng-click="amountpay(walletmenu)">
+                        {{walletmenu.menutitle}}
+                    </button>
+                </div>
+            </div>
+            <div ng-if="!is_showbtn">
+                <div class="text-center service-name"> {{menu.menutitle}} </div>
+                <form name="walletfrm" ng-submit="walletsubmit(walletfrm.$valid, data)" novalidate>
+                    <div class="list">
+                        <label class="item item-input item-floating-label">
+                            <span class="input-label">Enter Purpose</span>
+                            <input type="text" name="purpose" ng-model="data.purpose" placeholder="Enter Purpose" ng-required="true">
+                            <span class="error" ng-show="(walletfrm.$submitted || walletfrm.purpose.$touched) && (walletfrm.purpose.$pristine || walletfrm.purpose.$invalid) && (walletfrm.purpose.$error.required)">Enter purpose of pay</span>
+                        </label>
+                        <label class="item item-input item-floating-label">
+                            <span class="input-label">Enter Amount</span>
+                            <input type="number" name="amount" ng-model="data.amount" placeholder="Enter Amount" ng-required="true">
+                            <span class="error" ng-show="(walletfrm.$submitted || walletfrm.amount.$touched) && (walletfrm.amount.$pristine || walletfrm.amount.$invalid) && (walletfrm.amount.$error.required)">Enter amount of pay</span>
+                        </label>
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-50">
+                            <button type="submit" class="button button-block button-dark">Pay Now</button>
+                        </div>
+                        <div class="col col-50">
+                            <button class="button button-block button-assertive" ng-click="cacelpay()"> Cancel </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </ion-content>
+    </ion-view>
+</div>

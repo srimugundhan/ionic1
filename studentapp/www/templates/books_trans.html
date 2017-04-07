@@ -1,0 +1,35 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="Books Transactions" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+            <ion-scroll direction="x" class="wide-as-needed">
+                <ul class="responsive_table" ng-if="bookTrans.length > 0">
+                    <li class="row header">
+                        <div class="col">SNO</div>
+                        <div class="col">Book No</div>
+                        <div class="col">Book Name</div>
+                        <div class="col">Issue Date</div>
+                        <div class="col">Return Date</div>
+                        <div class="col">Status</div>
+                    </li>
+                    <li class="row" ng-repeat="bookTran in bookTrans">
+                        <div class="col">{{$index+1}}</div>
+                        <div class="col">{{bookTran.bookNum}}</div>
+                        <div class="col">{{bookTran.bookName}}</div>
+                        <div class="col">{{bookTran.isueDate | dateFmt}}</div>
+                        <div class="col">{{bookTran.returnDate | dateFmt}}</div>
+                        <div class="col">{{bookTran.status}}</div>
+
+                    </li>
+                </ul>
+                <div ng-if="bookTrans.length == 0 && lstatus" class="no-record">
+                    No transactoins
+                </div>
+            </ion-scroll>
+        </ion-content>
+    </ion-view>
+</div>

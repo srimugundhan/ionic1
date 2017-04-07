@@ -1,0 +1,115 @@
+<ion-side-menus enable-menu-with-back-views="false" hide-back-button="true" class="left-menu">
+    <ion-side-menu-content ng-controller="AppController">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-tabs class="tabs-color-active-positive bottom-nav-tab" ng-show="isDashboard">
+            <!-- Bottom Toolbar-->
+            <div class="toolbar">
+                <div class="toolbar-inner">
+                    <ul class="toolbar_icons">
+                        <li>
+                            <span ng-click="stageGo('mobix.Profile')" class="open-panel"><img src="images/icons/white/user.png" alt="" title="" /></span>
+                        </li>
+                        <li>
+                            <span ng-click="linkGo('http://digitalmis.in/DMISUltimate')"><img src="images/icons/white/browse.png" alt="" title="" /></span>
+                        </li>
+                        <li class="menuicon">
+                            <span menu-toggle="left"><img src="images/icons/white/menu.png" alt="" title="" /></span>
+                        </li>
+                        <li>
+                            <span ng-click="linkGo('https://calendar.google.com/calendar')"><img src="images/icons/white/blog.png" alt="" title="" /></span>
+                        </li>
+                        <li>
+                            <span ng-click="stageGo('mobix.Dashboard')"><img src="images/icons/white/contact.png" alt="" title="" /></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </ion-tabs>
+        <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left" class="slide-menu-bar">
+        <ion-content>
+            <ion-list>
+                <ion-item menu-close class="item item-image item-thumbnail profile-menu" ng-click="stageGo('mobix.Dashboard')">
+                    <img ng-src="{{userauth.imgUrl}}">
+                    <div class="user_details">
+                        <p>Hi, <span class="js-user-name">{{userauth.userdetails.fname}} {{userauth.userdetails.lname}}</span></p>
+                    </div>
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.Dashboard')" class="ion-android-home">
+                    Home
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.Profile')" class="ion-person">
+                    Profile
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.BookSearch')" class="ion-search">
+                    Book Search
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.BookTrans')" class="ion-ios-book">
+                    Books Transactions
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.Wallet')" class="ion-cash">
+                    Wallet
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="logout()" class="ion-log-out">
+                    Logout
+                </ion-item>
+            </ion-list>
+
+            <!-- <div class="panel panel-left panel-cover">
+                <div class="user_login_info">
+                    <div class="user_thumb">
+                        <img src="images/profile.jpg" alt="" title="" class="js-user-avatar" />
+                        <div class="user_details">
+                            <p>Hi, <span class="js-user-name">John Doe</span></p>
+                        </div>
+                        <div class="user_social">
+                            <a href="#" data-popup=".popup-social" class="open-popup"><img src="images/icons/white/twitter.png" alt="" title="" /></a>
+                        </div>
+                    </div>
+
+                    <nav class="user-nav">
+                        <ul>
+                            <li>
+                                <a href="features.html" class="close-panel"><img src="images/icons/white/settings.png" alt="" title="" /><span>Settings</span></a>
+                            </li>
+                            <li>
+                                <a href="features.html" class="close-panel"><img src="images/icons/white/briefcase.png" alt="" title="" /><span>Account</span></a>
+                            </li>
+                            <li>
+                                <a href="features.html" class="close-panel"><img src="images/icons/white/message.png" alt="" title="" /><span>Messages</span><strong class="green">12</strong></a>
+                            </li>
+                            <li>
+                                <a href="features.html" class="close-panel"><img src="images/icons/white/download.png" alt="" title="" /><span>Downloads</span><strong class="blue">5</strong></a>
+                            </li>
+
+                            <li>
+                                <a href="apply_leave.html" class="close-panel"><img src="images/icons/white/download.png" alt="" title="" /><span>Apply Leave</span></a>
+                            </li>
+
+                            <li>
+                                <a href="index.html" class="close-panel"><img src="images/icons/white/lock.png" alt="" title="" /><span>Logout</span></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>-->
+
+        </ion-content>
+
+    </ion-side-menu>
+
+
+</ion-side-menus>

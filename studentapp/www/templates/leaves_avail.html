@@ -1,0 +1,31 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="Leave Available" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+            <ul class="responsive_table" ng-if="leaveDetails.length > 0" style="width: 100%">
+                <li class="row header">
+                    <div class="col" style="width:20%">SNO</div>
+                    <div class="col" style="width:40%">Leave Type</div>
+                    <div class="col" style="width:40%">Leave Count</div>
+                </li>
+                <li class="row">
+                    <div class="col" style="width:20%">1</div>
+                    <div class="col" style="width:40%">{{leaveDetails[0].leavetype}}</div>
+                    <div class="col" style="width:40%">{{leaveDetails[0].leavecount}}</div>
+                </li>
+                <li class="row">
+                    <div class="col" style="width:20%">2</div>
+                    <div class="col" style="width:40%">{{leaveDetails[0].leavetype1}}</div>
+                    <div class="col" style="width:40%">{{leaveDetails[0].leavecount1}}</div>
+                </li>
+            </ul>
+            <div ng-if="leaveDetails.length == 0" class="no-record">
+                No leave in this status
+            </div>
+        </ion-content>
+    </ion-view>
+</div>

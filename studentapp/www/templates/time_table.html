@@ -1,0 +1,130 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="Time Table" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+
+            <form name="timetbl" ng-submit="getTimeTables(timetbl.$valid, data)" novalidate>
+                <div class="list">
+                    <div class="row">
+                        <div class="col col-40">
+                            <label class="item item-input item-select">
+                                <div class="input-label">
+                                    Year
+                                </div>
+                                <select id="group" class="form_select" ng-model="data.yearSelect" name="yearSelect" ng-options="year as year for year in years" ng-required="true">
+                                <option value=""> Select Year </option>
+                                </select>
+                            </label>
+                            <span class="error" ng-show="(timetbl.$submitted || timetbl.yearSelect.$touched) && (timetbl.yearSelect.$pristine || timetbl.yearSelect.$invalid) && (timetbl.yearSelect.$error.required)">Select Year</span>
+                        </div>
+                        <div class="col col-40">
+                            <label class="item item-input item-select">
+                                    <div class="input-label">
+                                        Code
+                                    </div>
+                                    <select id="group" class="form_select" ng-model="data.courseSelect" name="courseSelect" ng-options="cource.code as cource.course for cource in cources" ng-required="true">
+                                    <option value=""> Select Code </option>
+                                    </select>
+                                </label>
+                            <span class="error" ng-show="(timetbl.$submitted || timetbl.courseSelect.$touched) && (timetbl.courseSelect.$pristine || timetbl.courseSelect.$invalid) && (timetbl.courseSelect.$error.required)">Select Code</span>
+                        </div>
+                        <div class="col col-20">
+                            <button type="submit" class="button button-assertive"> Submit </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <ion-scroll direction="x" class="wide-as-needed">
+                <div class="divTable" ng-if="isShown">
+                    <div class="divTableBody">
+                        <div class="divTableRow divHead">
+                            <div class="divTableCell"> {{timtables.menu[0]['Head']}} </div>
+                            <div class="divTableCell"> {{timtables.menu[1]['periodstart']}}-{{timtables.menu[1]['periodend']}}</div>
+                            <div class="divTableCell"> {{timtables.menu[2]['periodstart']}}-{{timtables.menu[2]['periodend']}}</div>
+                            <div class="divTableCell"> {{timtables.menu[3]['periodstart']}}-{{timtables.menu[3]['periodend']}}</div>
+                            <div class="divTableCell"> {{timtables.menu[4]['periodstart']}}-{{timtables.menu[4]['periodend']}} </div>
+                            <div class="divTableCell"> {{timtables.menu[5]['periodstart']}}-{{timtables.menu[5]['periodend']}} </div>
+                            <div class="divTableCell"> {{timtables.menu[6]['periodstart']}}-{{timtables.menu[6]['periodend']}}</div>
+                            <div class="divTableCell"> {{timtables.menu[7]['periodstart']}}-{{timtables.menu[7]['periodend']}} </div>
+                            <div class="divTableCell"> {{timtables.menu[8]['periodstart']}}-{{timtables.menu[8]['periodend']}} </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"> MON </div>
+                            <div class="divTableCell"> {{timtables.mon[0]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.mon[1]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.mon[2]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.mon[3]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.mon[4]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.mon[5]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.mon[6]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.mon[7]['subjectname'] | NoData}}</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"> TUE </div>
+                            <div class="divTableCell"> {{timtables.tue[0]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.tue[1]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.tue[2]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.tue[3]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.tue[4]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.tue[5]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.tue[6]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.tue[7]['subjectname'] | NoData}}</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"> WED </div>
+                            <div class="divTableCell"> {{timtables.wed[0]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.wed[1]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.wed[2]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.wed[3]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.wed[4]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.wed[5]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.wed[6]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.wed[7]['subjectname'] | NoData}}</div>
+                        </div>
+
+                        <div class="divTableRow">
+                            <div class="divTableCell"> THU </div>
+                            <div class="divTableCell"> {{timtables.thu[0]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.thu[1]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.thu[2]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.thu[3]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.thu[4]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.thu[5]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.thu[6]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.thu[7]['subjectname'] | NoData}}</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"> FRI </div>
+                            <div class="divTableCell"> {{timtables.fri[0]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.fri[1]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.fri[2]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.fri[3]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.fri[4]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.fri[5]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.fri[6]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.fri[7]['subjectname'] | NoData}}</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"> SAT </div>
+                            <div class="divTableCell"> {{timtables.sat[0]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.sat[1]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.sat[2]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.sat[3]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.sat[4]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.sat[5]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.sat[6]['subjectname'] | NoData}}</div>
+                            <div class="divTableCell"> {{timtables.sat[7]['subjectname'] | NoData}}</div>
+                        </div>
+                    </div>
+                </div>
+            </ion-scroll>
+            <div ng-if="timtables.length == 0" class="no-record">
+                No data available
+            </div>
+        </ion-content>
+    </ion-view>
+</div>
