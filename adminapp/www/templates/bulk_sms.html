@@ -1,0 +1,134 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="Send SMS to Students" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+            <form name="smstbl" ng-submit="findStudent(smstbl.$valid, data)" novalidate ng-if="isFilterShow">
+                <div class="list">
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Year
+                        </div>
+                        <select id="group" class="form_select" ng-model="data.yearSelect" name="yearSelect" ng-options="year as year for year in years" ng-required="true">
+                        <option value=""> Select Year </option>
+                        </select>
+                    </label>
+                    <span class="error" ng-show="(smstbl.$submitted || smstbl.yearSelect.$touched) && (smstbl.yearSelect.$pristine || smstbl.yearSelect.$invalid) && (smstbl.yearSelect.$error.required)">Select Year</span>
+                </div>
+                <div class="list">
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Course 
+                        </div>
+                        <select id="group" class="form_select" ng-model="data.courseSelect" name="courseSelect" ng-options="course.code as course.course for course in courses">
+                        <option value=""> Select Course </option>
+                        </select>
+                    </label>
+                </div>
+                <div class="list">
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Semester
+                        </div>
+                        <select id="smes" class="form_select" ng-model="data.semSelect" name="semSelect" ng-options="sem.code as sem.sem for sem in semester" ng-required="true">
+                        <option value=""> Select Semester </option>
+                        </select>
+                    </label>
+                    <span class="error" ng-show="(smstbl.$submitted || smstbl.semSelect.$touched) && (smstbl.semSelect.$pristine || smstbl.semSelect.$invalid) && (smstbl.semSelect.$error.required)">Select Year</span>
+                </div>
+
+                <div class="list">
+                    <label class="item item-input item-input">
+                        <div class="input-label">
+                            Student Name
+                        </div>
+                        <input type="text" class="form_input" ng-model="data.name" name="name">
+                    </label>
+                </div>
+
+                <div class="list">
+                    <label class="item item-input item-input">
+                        <div class="input-label">
+                            Student ID
+                        </div>
+                        <input type="text" class="form_input" ng-model="data.stuid" name="stuid">
+                    </label>
+                </div>
+
+                <button type="submit" class="button button-assertive"> Submit </button>
+            </form>
+
+            <ion-scroll direction="xy" class="wide-as-needed" ng-if="!isFilterShow && !isMsgBoxShow">
+                <span style="float:left; color: blue" ng-click="backtoFilter()"> <i class="ion-chevron-left"> </i> Back to Filter </span>
+                <span style="float:right">Records Found: {{totalRecords}}</span>
+                <br>
+                <div class="divTable" ng-if="!isFilterShow && !isMsgBoxShow">
+                    <div class="divTableBody">
+                        <div class="divTableRow divHead">
+                            <div class="col">
+                                SNO <br>
+                                <label> <input type="checkbox" ng-model="isCheckAll" ng-click="selectAll(isCheckAll)"> {{isCheckLable}}</label>
+                            </div>
+                            <div class="col"> Stu ID </div>
+                            <div class="col"> Stu Name</div>
+                            <div class="col"> Mobile </div>
+                            <div class="col"> Email </div>
+                            <div class="col"> Parent Mobile </div>
+                        </div>
+
+                        <div class="divTableRow" ng-repeat="student in sudents">
+                            <div class="divTableCell"> {{$index+1}}
+                                <input type="checkbox" ng-model="selected[$index]" ng-click="chooseCheckbox(student.contactnumber, student.parentsphone, selected[$index])" ng-checked="isCheckAll">
+                            </div>
+                            <div class="divTableCell"> {{student.studentid}}</div>
+                            <div class="divTableCell"> {{student.name}}</div>
+                            <div class="divTableCell"> {{student.contactnumber}}</div>
+                            <div class="divTableCell"> {{student.email}} </div>
+                            <div class="divTableCell"> {{student.parentsphone}} </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="clearfix"></div>
+                    <br>
+                    <button class="button button-assertive" ng-click="showMsgTemplate()"> Next </button>
+                </div>
+            </ion-scroll>
+
+            <form name="bulkSend" ng-submit="sendBulkMessage(bulkSend.$valid, messageData)" novalidate ng-if="isMsgBoxShow">
+
+                <span style="float:left; color: blue" ng-click="backtoFilter2()"> <i class="ion-chevron-left"> </i> Back to Filter </span>
+                <br>
+                <div class="list">
+                    <label class="item item-select item-stacked-label">
+                        <div class="input-label">
+                            Select Message
+                        </div>
+                        <select id="group" class="form_select" ng-model="messageData.messageType" name="messageType" ng-options="message.msgcode as message.message for message in msgTemplates" ng-change="messageTemplate(messageData.messageType)">
+                        <option value=""> Select Message</option>
+                        </select>
+                    </label>
+                </div>
+
+                
+                <div class="list">
+                    <label class="item item-input item-stacked-label">
+                        <div class="input-label">
+                            Write Message
+                        </div>
+                        <textarea class="form_input" ng-model="messageData.writeMsg" name="writeMsg" ng-required="true" style="height:120px"></textarea>
+                        <span class="error" ng-show="(bulkSend.$submitted || bulkSend.writeMsg.$touched) && (bulkSend.writeMsg.$pristine || bulkSend.writeMsg.$invalid) && (bulkSend.writeMsg.$error.required)">Message Required</span>
+                    </label>
+                </div>
+
+                <label> <input type="checkbox" ng-model="studentchkbox" ng-click="studentcheck(1, studentchkbox)">SMS to Student</label>
+                <label> <input type="checkbox" ng-model="parentchkbox" ng-click="parentcheck(1, parentchkbox)">SMS to Parent</label>
+ 
+                <button type="submit" class="button button-assertive"> Send Message </button>
+            </form>
+        </ion-content>
+    </ion-view>
+</div>

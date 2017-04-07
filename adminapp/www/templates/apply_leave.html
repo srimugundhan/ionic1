@@ -1,0 +1,84 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="Apply Leave" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+            <form name="leaveFrm" ng-submit="applyLeave(leaveFrm.$valid, data)" novalidate>
+                <div class="list">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Leave Group</span>
+                        <input type="text" class="form_input" ng-model="data.group_name" name="leave_group" readonly="readonly">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Employee ID</span>
+                        <input type="text" class="form_input" ng-model="data.EmpId" name="emplid" readonly="readonly">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Employee Name</span>
+                        <input id="empname" type="text" class="form_input js-leave-empname" ng-model="data.EmpName" readonly="readonly">
+                    </label>
+
+                    <label class="item item-input item-select item-stacked-label">
+                        <div class="input-label">
+                        Incharge Name
+                        </div>
+                        <select id="incharge" name="staffinchrg" ng-model="data.StaffICEmpID" class="js-leave-incharge-sel form_select" ng-required="true">
+                            <option value=""> Select Incharge </option>
+                            <option value="{{incharg}}" ng-repeat="incharg in inchargs"> {{incharg.Name}} </option>
+                        </select>
+                        <div class="clear"></div> <br>
+                        <span class="error" ng-show="(leaveFrm.$submitted || leaveFrm.staffinchrg.$touched) && (leaveFrm.staffinchrg.$pristine || leaveFrm.staffinchrg.$invalid) && (leaveFrm.staffinchrg.$error.required)">Select Incharge</span>
+                    </label>
+
+                    <label class="item item-input item-select item-stacked-label">
+                        <div class="input-label">
+                        Leave Type
+                        </div>
+                        <select id="leave-type" name="leave_type" ng-model="data.LeaveType" class="js-leave-type-sel form_select" ng-options="leaveType.code as leaveType.code for leaveType in leaveTypes" ng-required="true" ng-change="leaveCheck(data.LeaveType) ">
+                            <option value=""> Select Leave Type </option>
+                        </select>
+                        <div class="clear"></div> <br>
+                        <span class="error" ng-show="(leaveFrm.$submitted || leaveFrm.leave_type.$touched) && (leaveFrm.leave_type.$pristine || leaveFrm.leave_type.$invalid) && (leaveFrm.leave_type.$error.required)">Select leave type</span>
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Leave Available</span>
+                        <input id="leave-avail" type="text" class="form_input js-leave-avail" ng-model="data.leaveAvail" placehoder="Leave Available" readonly>
+                        <div class="clear"></div>
+                        <span class="error" ng-show="(leaveFrm.$submitted || leaveFrm.leave_type.$touched) && (leaveFrm.leave_type.$pristine || leaveFrm.leave_type.$invalid) && (leaveFrm.leave_type.$error.required)">Select leave type</span>
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">From Date</span>
+                        <input id="calendar-default" type="date" name="fromdate" ng-model="data.fromdate" class="form_input js-leave-from leave-calendar" ng-required="true" ng-click="showCalendar(1)" placeholder="Choose Date">
+                        <span class="error" ng-show="(leaveFrm.$submitted || leaveFrm.fromdate.$touched) && (leaveFrm.fromdate.$pristine || leaveFrm.fromdate.$invalid) && (leaveFrm.fromdate.$error.required)">From date is required</span>
+                    <div class="clear"></div>
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">To Date</span>
+                        <input id="leave-to" type="date" name="todate" ng-model="data.todate" class="form_input js-leave-to" ng-required="true" ng-click="showCalendar(2)" placeholder="Choose Date">
+                         <span class="error" ng-show="(leaveFrm.$submitted || leaveFrm.todate.$touched) && (leaveFrm.todate.$pristine || leaveFrm.todate.$invalid) && (leaveFrm.todate.$error.required)">To date is required</span>
+                        <div class="clear"></div>
+                    </label>
+
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">No of Days</span>
+                        <input id="leave-days" type="number" ng-model="data.NoofDays" class="form_input js-leave-days" ng-required="true" placeholder="No of Days">
+                        <span class="error" ng-show="(leaveFrm.$submitted || leaveFrm.leave_type.$touched) && (leaveFrm.leave_type.$pristine || leaveFrm.leave_type.$invalid) && (leaveFrm.leave_type.$error.required)">No of leave days required</span>
+                        <span class="error" ng-show="is_exit_leave">Check your available leave days</span>
+                    <div class="clear"></div>
+                    </label>
+
+                    <label class="label-checkbox leave-checkbox">
+                        <ion-checkbox name="halfday" ng-model="data.is_half_day" ng-click="is_half_day(data.is_half_day)"> <div class="checkbox-label"> Half Day </div> </ion-checkbox>
+                    </label>
+                </div>
+                <button type="submit" class="button button-block button-dark "> Apply Leave </button>
+            </form>
+        </ion-content>
+    </ion-view>
+</div>

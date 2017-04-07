@@ -1,0 +1,149 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="Students Attendance" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+            <div ng-if="is_show_form">
+                <form name="studleavetbl" ng-submit="findStudent(studleavetbl.$valid, data)" novalidate>
+                    <div class="list">
+                        <label class="item item-input item-select">
+                        <div class="input-label">
+                            Year
+                        </div>
+                        <select id="group" class="form_select" ng-model="data.yearSelect" name="yearSelect" ng-options="year as year for year in years" ng-required="true">
+                        <option value=""> Select Year </option>
+                        </select>
+                    </label>
+                        <span class="error" ng-show="(studleavetbl.$submitted || studleavetbl.yearSelect.$touched) && (studleavetbl.yearSelect.$pristine || studleavetbl.yearSelect.$invalid) && (studleavetbl.yearSelect.$error.required)">Select Year</span>
+                    </div>
+                    <div class="list">
+                        <label class="item item-input item-select">
+                        <div class="input-label">
+                            Class 
+                        </div>
+                        <select id="group" class="form_select" ng-model="data.courseSelect" name="courseSelect" ng-options="course.code as course.course for course in courses" ng-required="true" ng-change="getSubject(data.courseSelect)">
+                        <option value=""> Select Class </option>
+                        </select>
+                    </label>
+                        <span class="error" ng-show="(studleavetbl.$submitted || studleavetbl.courseSelect.$touched) && (studleavetbl.courseSelect.$pristine || studleavetbl.courseSelect.$invalid) && (studleavetbl.courseSelect.$error.required)">Select Class</span>
+                    </div>
+                    <div class="list">
+                        <label class="item item-input item-select">
+                        <div class="input-label">
+                            Section
+                        </div>
+                        <select id="smes" class="form_select" ng-model="data.section" name="section" ng-options="sec.code as sec.section for sec in section">
+                        <option value=""> Select Section </option>
+                        </select>
+                    </label>
+                        <!--<span class="error" ng-show="(studleavetbl.$submitted || studleavetbl.section.$touched) && (studleavetbl.section.$pristine || studleavetbl.section.$invalid) && (studleavetbl.section.$error.required)">Select Section</span>-->
+                    </div>
+
+                    <div class="list">
+                        <label class="item item-input item-select">
+                        <div class="input-label">
+                            Semester
+                        </div>
+                        <select id="smes" class="form_select" ng-model="data.sems" name="sems" ng-options="sems.code as sems.sem for sems in semesters" ng-required="true">
+                        <option value=""> Select Semester </option>
+                        </select>
+                    </label>
+                        <span class="error" ng-show="(studleavetbl.$submitted || studleavetbl.sems.$touched) && (studleavetbl.sems.$pristine || studleavetbl.sems.$invalid) && (studleavetbl.sems.$error.required)">Select Semester</span>
+                    </div>
+
+                    <div class="list">
+                        <label class="item item-input item-select">
+                        <div class="input-label">
+                            Subject
+                        </div>
+                        <select id="smes" class="form_select" ng-model="data.subject" name="subject" ng-options="subject.code as subject.subject for subject in subjects" ng-required="true">
+                        <option value=""> Select Subject </option>
+                        </select>
+                    </label>
+                        <span class="error" ng-show="(studleavetbl.$submitted || studleavetbl.subject.$touched) && (studleavetbl.subject.$pristine || studleavetbl.subject.$invalid) && (studleavetbl.subject.$error.required)">Select Subject</span>
+                    </div>
+
+                    <button type="submit" class="button button-assertive"> Submit </button>
+                </form>
+            </div>
+            <div ng-if="!is_show_form">
+
+                <div class="list">
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Attandance Date
+                        </div>
+                        <input id="calendar-default" type="date" name="attandance" ng-model="data.attandance" class="form_input js-leave-from leave-calendar" ng-required="true" ng-click="showCalendar(1)" placeholder="Choose Date">
+                    </label>
+                </div>
+
+
+
+                <ion-scroll direction="x" class="wide-as-needed">
+                    <div class="divTable">
+                        <div class="divTableBody">
+                            <div class="row header">
+                                <div class="col">
+                                    SNO
+                                </div>
+                                <div class="col"> Regno </div>
+                                <div class="col"> Student Id</div>
+                                <div class="col"> Name</div>
+                                <div class="col chkbx"> Status
+                                    <br>
+                                    <label> <!--<input type="checkbox" ng-model="isCheckAll" ng-click="selectAll(isCheckAll)"> {{isCheckLable}}-->
+                                    <ion-checkbox  ng-model="isCheckAll" ng-click="selectAll(isCheckAll)"> {{isCheckLable}} </ion-checkbox>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row" ng-repeat="student in students">
+                                <div class="col">
+                                    {{$index+1}}
+                                </div>
+                                <div class="col"> {{student.regno}} </div>
+                                <div class="col"> {{student.studentid}} </div>
+                                <div class="col"> {{student.name}} </div>
+                                <div class="col chkbx">
+                                    <!--<input type="checkbox" ng-model="selected[$index]" ng-click="chooseCheckbox($index, selected[$index])" ng-checked="isCheckAll">--> 
+                                    <div ng-if="isCheckAll == false && attendance.length > 0"> 
+                                        <ion-checkbox ng-model="selected[$index]" ng-click="chooseCheckbox($index, selected[$index])" ng-checked="student.is_present == true"></ion-checkbox>
+                                    </div>
+
+                                    <div ng-if="isCheckAll != false || attendance.length == 0">
+                                        <ion-checkbox ng-model="selected[$index]" ng-click="chooseCheckbox($index, selected[$index])" ng-checked="isCheckAll" id="selected-{{$index+1}}" checked="{{(student.is_present == true)?'checked':''}}"></ion-checkbox>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="attendance-info">
+                        <br>
+                        Total Student: {{students.count.stucount}} <br>
+                        Total Present: {{choosed.length}} <br>
+                        Total Absent: {{students.count.stucount-choosed.length}}
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-50">
+                            <button type="submit" class="button button-block button-positive" ng-click="doattandance(data.attandance)" ng-if="is_show_submit_button">
+                                Submit
+                            </button>
+
+                            <button type="submit" class="button button-block button-positive" ng-click="sendAbsentSMS()" ng-if="!is_show_submit_button">
+                                Send SMS for Absent
+                            </button>
+                        </div>
+                        <div class="col col-50">
+                            <button type="submit" class="button button-block button-assertive" ng-click="cancel()">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </ion-scroll>
+            </div>
+        </ion-content>
+    </ion-view>
+</div>

@@ -1,0 +1,48 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="Event Calendar" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+
+            <form name="timetbl" ng-submit="getEvents(timetbl.$valid, data)" novalidate>
+                <div class="list">
+                    <div class="row">
+                        <div class="col col-40">
+                            <label class="item item-input item-select">
+                                <div class="input-label">
+                                    Year
+                                </div>
+                                <select id="group" class="form_select" ng-model="data.yearSelect" name="yearSelect" ng-options="year as year for year in years" ng-required="true">
+                                <option value=""> Select Year </option>
+                                </select>
+                            </label>
+                            <span class="error" ng-show="(timetbl.$submitted || timetbl.yearSelect.$touched) && (timetbl.yearSelect.$pristine || timetbl.yearSelect.$invalid) && (timetbl.yearSelect.$error.required)">Select Year</span>
+                        </div>
+                        <div class="col col-40">
+                            <label class="item item-input item-select">
+                                <div class="input-label">
+                                    Month
+                                </div>
+                                <select id="group" class="form_select" ng-model="data.monthSelect" name="selMonth" ng-options="months.indexOf(month)+1 as month for month in months" ng-required="true">
+                                    <option value=""> Select Month </option>
+                                </select>
+                            </label>
+                            <span class="error" ng-show="(timetbl.$submitted || timetbl.selMonth.$touched) && (timetbl.selMonth.$pristine || timetbl.selMonth.$invalid) && (timetbl.selMonth.$error.required)">Select Month</span>
+                        </div>
+                        <div class="col col-20">
+                            <button type="submit" class="button button-assertive"> Submit </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <ion-scroll direction="xy" class="wide-as-needed">
+                <!--<div ui-calendar="uiConfig.calendar" ng-model="eventSources" ng-if="isShown">-->
+
+                <div class="calendar" ng-model="eventSources" id="calendar" calendar="myCalendar" config="uiConfig.calendar" ui-calendar="uiConfig.calendar" ng-if="isShown"></div>
+            </ion-scroll>
+        </ion-content>
+    </ion-view>
+</div>

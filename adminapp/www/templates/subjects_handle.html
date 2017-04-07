@@ -1,0 +1,28 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="Subject Handle" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+            <ion-scroll direction="x" class="wide-as-needed">
+                <ul class="responsive_table" ng-if="classHandling.length > 0">
+                    <li class="row header">
+                        <div class="col" style="width: 10%">SNO</div>
+                        <div class="col" style="width: 45%">Course Name</div>
+                        <div class="col" style="width: 45%">Subject Name</div>
+                    </li>
+                    <li class="row" ng-repeat="classH in classHandling">
+                        <div class="col" style="width: 10%">{{$index+1}}</div>
+                        <div class="col" style="width: 45%"><span cour-show cource={{classH.course}} cources={{cources}}></span></div>
+                        <div class="col" style="width: 45%"><span sub-show subject={{classH.subject}} subjects={{subjects}}></span></div>
+                    </li>
+                </ul>
+                <div ng-if="leaveDetails.length == 0 && lstatus" class="no-record">
+                    No leave in this status
+                </div>
+            </ion-scroll>
+        </ion-content>
+    </ion-view>
+</div>

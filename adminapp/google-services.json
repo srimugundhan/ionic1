@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "146787918465",
+    "firebase_url": "https://mobix-9951b.firebaseio.com",
+    "project_id": "mobix-9951b",
+    "storage_bucket": "mobix-9951b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146787918465:android:4606c21f3b1b7132",
+        "android_client_info": {
+          "package_name": "com.vidhyavirthya.mobix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "146787918465-hphbdplv9m26jv4cpu77lg4mvbbgefin.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTKT1k4ergaQ7SBRxBEJfyT_V2SKUJDpI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

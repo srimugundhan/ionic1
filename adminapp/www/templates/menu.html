@@ -1,0 +1,152 @@
+<ion-side-menus enable-menu-with-back-views="false" hide-back-button="true" class="left-menu">
+    <ion-side-menu-content ng-controller="AppController">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-tabs class="tabs-color-active-positive bottom-nav-tab" ng-show="isDashboard">
+            <!-- Bottom Toolbar-->
+            <div class="toolbar">
+                <div class="toolbar-inner">
+                    <ul class="toolbar_icons">
+                        <li>
+                            <span menu-toggle="left" class="open-panel"><img src="images/icons/white/user.png" alt="" title="" /></span>
+                        </li>
+                        <li>
+                            <span ng-click="linkGo('http://digitalmis.in/DMISUltimate')"><img src="images/icons/white/browse.png" alt="" title="" /></span>
+                        </li>
+                        <li class="menuicon">
+                            <span ng-click="stageGo('mobix.PopMenu')"><img src="images/icons/white/menu.png" alt="" title="" /></span>
+                        </li>
+                        <li>
+                            <span ng-click="linkGo('https://calendar.google.com/calendar')"><img src="images/icons/white/blog.png" alt="" title="" /></span>
+                        </li>
+                        <li>
+                            <span ng-click="stageGo('mobix.PopMenu')"><img src="images/icons/white/contact.png" alt="" title="" /></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </ion-tabs>
+        <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left" class="slide-menu-bar">
+        <ion-content>
+            <ion-list>
+                <ion-item menu-close class="item item-image item-thumbnail profile-menu" ng-click="stageGo('mobix.Dashboard')">
+                    <img ng-src="{{userauth.imgUrl}}">
+                    <div class="user_details">
+                        <p>Hi, <span class="js-user-name">{{userauth.EmpName}}</span></p>
+                    </div>
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.PopMenu')" class="ion-android-home" ng-if="userauth.RoleId != 1">
+                    Home
+                </ion-item>
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.Charts')" class="ion-pie-graph" ng-if="userauth.RoleId == 1">
+                    Student Strength
+                </ion-item>
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.ApplyLeave')" class="ion-clock" ng-if="userauth.RoleId != 1">
+                    Apply Leave
+                </ion-item>
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.Students')" class="ion-ios-people" ng-if="userauth.RoleId != 1">
+                    My Students
+                </ion-item>
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.Leaves')" class="ion-paper-airplane" ng-if="userauth.RoleId != 1">
+                    My Leaves
+                </ion-item>
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.SubjectHandle')" class="ion-ios-book" ng-if="userauth.RoleId != 1">
+                    Subject Handling
+                </ion-item>
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.LeaveAvail')" class="ion-paper-airplane" ng-if="userauth.RoleId != 1">
+                    Available Leaves
+                </ion-item>
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.LeaveApproval')" class="ion-thumbsup" ng-if="userauth.RoleId == 1">
+                    Leave Approval
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.StaffApproval')" class="ion-thumbsup" ng-if="userauth.RoleId != 1">
+                    Leave Incharge Approval
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.LeaveRecommend')" class="ion-thumbsup" ng-if="userauth.designation == 'HOD'">
+                    Leave Recommend
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.StudLeave')" class="ion-ios-calendar">
+                    Student Attendance
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.StudAbsStaus')" class="ion-ios-calendar">
+                    Student Attendance Status
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.TimeTable')" class="ion-ios-calendar">
+                    Time Table
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.Events')" class="ion-ios-calendar" ng-if="userauth.RoleId != 1">
+                    Events
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.BulkSMS')" class="ion-android-textsms" ng-if="userauth.RoleId == 1">
+                    SMS to Student
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="stageGo('mobix.BulkSMSStaff')" class="ion-android-textsms" ng-if="userauth.RoleId == 1">
+                    SMS to Staff
+                </ion-item>
+
+                <ion-item nav-clear menu-close ng-click="logout()" class="ion-log-out">
+                    Logout
+                </ion-item>
+            </ion-list>
+
+            <!-- <div class="panel panel-left panel-cover">
+                <div class="user_login_info">
+                    <div class="user_thumb">
+                        <img src="images/profile.jpg" alt="" title="" class="js-user-avatar" />
+                        <div class="user_details">
+                            <p>Hi, <span class="js-user-name">John Doe</span></p>
+                        </div>
+                        <div class="user_social">
+                            <a href="#" data-popup=".popup-social" class="open-popup"><img src="images/icons/white/twitter.png" alt="" title="" /></a>
+                        </div>
+                    </div>
+
+                    <nav class="user-nav">
+                        <ul>
+                            <li>
+                                <a href="features.html" class="close-panel"><img src="images/icons/white/settings.png" alt="" title="" /><span>Settings</span></a>
+                            </li>
+                            <li>
+                                <a href="features.html" class="close-panel"><img src="images/icons/white/briefcase.png" alt="" title="" /><span>Account</span></a>
+                            </li>
+                            <li>
+                                <a href="features.html" class="close-panel"><img src="images/icons/white/message.png" alt="" title="" /><span>Messages</span><strong class="green">12</strong></a>
+                            </li>
+                            <li>
+                                <a href="features.html" class="close-panel"><img src="images/icons/white/download.png" alt="" title="" /><span>Downloads</span><strong class="blue">5</strong></a>
+                            </li>
+
+                            <li>
+                                <a href="apply_leave.html" class="close-panel"><img src="images/icons/white/download.png" alt="" title="" /><span>Apply Leave</span></a>
+                            </li>
+
+                            <li>
+                                <a href="index.html" class="close-panel"><img src="images/icons/white/lock.png" alt="" title="" /><span>Logout</span></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>-->
+
+        </ion-content>
+
+    </ion-side-menu>
+
+
+</ion-side-menus>

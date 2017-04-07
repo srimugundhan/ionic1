@@ -1,0 +1,25 @@
+<div class="apply_leave" cache-view="false">
+    <ion-view view-title="Student Count" cache-view="false" hide-back-button="true">
+        <ion-nav-bar>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showLeftSlide()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding leave-content">
+            <ion-scroll direction="xy" class="wide-as-needed">
+                <!--<canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"></canvas>-->
+                <!--<canvas id="pie" class="chart chart-pie" chart-data="pieData" chart-labels="pieLabel" chart-options="options"></canvas>-->
+
+                <div fusioncharts width="100%" type="pie3d" dataSource="{{myDataSource}}">
+                </div>
+
+                <div class="clear"></div>
+                <div ng-repeat="scount in studentsCount">
+                    {{scount.coursedes}} - {{scount.coursedetails}}
+                </div>
+            </ion-scroll>
+            <div class="clear" style="margin-bottom:30px ">&nbsp;</div>
+            <br>
+        </ion-content>
+    </ion-view>
+</div>

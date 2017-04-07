@@ -1,0 +1,40 @@
+<div class="login" >
+    <ion-nav-bar hide-nav-bar="true">
+        <ion-view name="login-view" cache-view="false">
+            <ion-content class="padding login-content" scroll="false">
+                <div class="popup popup-login" >
+                    <div class="content-block-login">
+                        <h4 class="page-title" >Digital MIS - Institute App</h4>
+                        <div class="form_logo"><img src="images/logo.png" alt="" title="" /></div>
+                        <div class="loginform" style="margin-left:15px;">
+                            <form id="LoginForm" name="loginForm" ng-submit="loginSubmit(loginForm.$valid, data)" novalidate>
+                                <input type="text" name="Username"  id="inpusername" class="form_input required" placeholder="username" ng-model="data.UserName" ng-required="true" />
+                                <span class="error" ng-show="(loginForm.$submitted || loginForm.Username.$touched) && (loginForm.Username.$pristine || loginForm.Username.$invalid) && (loginForm.Username.$error.required)">Username Required</span>
+
+                                <input type="password"  name="Password" id="inppassword" class="form_input required" placeholder="password" ng-model="data.Password" ng-required="true" />
+
+                                <span class="error" ng-show="(loginForm.$submitted || loginForm.Password.$touched) && (loginForm.Password.$pristine || loginForm.Password.$invalid) && (loginForm.Password.$error.required)">Password Required</span>
+
+                                <div class="clear"></div>
+                                <!--<div class="forgot_pass">
+                                    <a href="#" data-popup=".popup-forgot" class="open-popup">Forgot Password?</a>
+                                </div>-->
+                                <div class="login-btn">
+                                    <button type="submit" class="button button-block button-dark" >
+                                        SIGN IN
+                                    </button>
+                                </div>
+                            </form>
+                            <!--<div class="signup_bottom">
+                                <p>Don't have an account?</p>
+                                <a href="#" data-popup=".popup-signup" class="open-popup">SIGN UP</a>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+
+            </ion-content>
+        </ion-view>
+
+    </ion-nav-bar>
+</div>
